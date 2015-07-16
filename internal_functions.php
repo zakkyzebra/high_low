@@ -1,31 +1,16 @@
 <?php
 
-function values($a){
-	if(empty($a)){
-		echo "Type is " . gettype($a) . " with an EMPTY value" . PHP_EOL;
-	}else if(is_array($a)){
-		echo "Type is " . gettype($a) . " with a value of ". var_dump($a) . PHP_EOL;
-	}else{
-		echo "Type is " . gettype($a) . " with a value of '$a'" . PHP_EOL;
-	}
-}
 function inspect($a){
-	if(is_int($a)){
-		values($a);
-	} else if(is_float($a)){
-		values($a);
-	} else if(is_bool($a)){
-		if($a == false){
-			values($a);
+	if(isset($a)){
+		if(is_array($a)){
+			return "Type is " . gettype($a) . " with a value of (REFER TO ABOVE)". var_dump($a) . PHP_EOL . PHP_EOL;
+		}elseif(is_bool($a) && ($a == false)){
+			return "Type is " . gettype($a) . " with a value of '0'" . PHP_EOL . PHP_EOL;
 		}else{
-			values($a);
+			return "Type is " . gettype($a) . " with a value of '$a'" . PHP_EOL . PHP_EOL;
 		}
-	} else if(is_array($a)){
-		values($a);
-	} else if(is_null($a)){
-		values($a);
-	} else if(is_string($a)){
-		values($a);
+	}else{
+		return "Type is " . gettype($a) . " with an EMPTY value" . PHP_EOL . PHP_EOL;
 	}
 }
 
